@@ -9,8 +9,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class EjemploSubirDatos {
 public static void main(String[] args) {
@@ -38,7 +36,6 @@ Connection conexion = DriverManager.getConnection(url);
         } catch (SQLException e) {
         e.printStackTrace();
 }       catch (ClassNotFoundException ex) {     
-            Logger.getLogger(ProyectoTema2.class.getName()).log(Level.SEVERE, null, ex);
         }     
     }
 }
