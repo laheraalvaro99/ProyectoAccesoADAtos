@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package grupo4.proyectoaccesoadatos.modelo;
+package grupo4.proyectoaccesodatos.modelo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
