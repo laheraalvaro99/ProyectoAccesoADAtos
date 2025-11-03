@@ -15,7 +15,7 @@ public static void main(String[] args) {
         try {
 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         String url = "jdbc:sqlserver://localhost:1433;"
-           + "databaseName=Academia;"
+           + "databaseName=academia;"
            + "integratedSecurity=true;"
            + "encrypt=false;"
            + "trustServerCertificate=true;";
@@ -33,9 +33,7 @@ Connection conexion = DriverManager.getConnection(url);
         resul.close();
         sentencia.close(); 
         conexion.close(); 
-        } catch (SQLException e) {
-        e.printStackTrace();
-}       catch (ClassNotFoundException ex) {     
-        }     
+        } catch (SQLException | ClassNotFoundException e) {
+}     
     }
 }

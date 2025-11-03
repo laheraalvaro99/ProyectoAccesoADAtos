@@ -11,4 +11,11 @@
         <maven.compiler.target>20</maven.compiler.target>
         <exec.mainClass>a.proyectoaccesoadatos.ProyectoAccesoADatos</exec.mainClass>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>9.4.0</version>
+        </dependency>
+    </dependencies>
 </project>
