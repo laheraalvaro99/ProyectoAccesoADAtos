@@ -34,6 +34,7 @@ Connection conexion = DriverManager.getConnection(url);
         sentencia.close(); 
         conexion.close(); 
         } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
 }     
     }
 }

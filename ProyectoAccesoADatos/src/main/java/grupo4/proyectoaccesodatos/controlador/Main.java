@@ -8,6 +8,6 @@ package grupo4.proyectoaccesodatos.controlador;
  *
  * @author Diurno
  */
-public class NewClass {
+public class Main {
     
 }
