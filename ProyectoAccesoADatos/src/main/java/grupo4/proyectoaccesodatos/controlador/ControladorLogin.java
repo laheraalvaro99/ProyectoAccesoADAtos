@@ -5,18 +5,18 @@
 package grupo4.proyectoaccesodatos.controlador;
 
 import grupo4.proyectoaccesodatos.modelo.Usuario;
-import grupo4.proyectoaccesodatos.modelo.UsuarioDAO;
 import grupo4.proyectoaccesodatos.vista.LoginForm;
 
 import javax.swing.*;
 
 public class ControladorLogin {
+
     private final LoginForm vista;
-    private final UsuarioDAO usuarioDAO;
+    private final Usuario user;
 
     public ControladorLogin(LoginForm vista) {
         this.vista = vista;
-        this.usuarioDAO = new UsuarioDAO();
+        user = new Usuario();
         initController();
     }
 
@@ -28,10 +28,10 @@ public class ControladorLogin {
         String email = vista.getTxtEmail().getText();
         String pass = String.valueOf(vista.getTxtPassword().getPassword());
 
-        Usuario user = usuarioDAO.validarLogin(email, pass);
+        user.validarLogin(email, pass);
 
         if (user != null) {
-            JOptionPane.showMessageDialog(vista, 
+            JOptionPane.showMessageDialog(vista,
                     "Bienvenido " + user.getNombre() + " (" + (user.getRol() == 'p' ? "Profesor" : "Alumno") + ")");
         } else {
             JOptionPane.showMessageDialog(vista, "Email o contraseña incorrectos.");

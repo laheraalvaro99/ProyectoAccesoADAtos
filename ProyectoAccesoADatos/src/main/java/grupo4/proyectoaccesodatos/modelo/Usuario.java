@@ -50,6 +50,31 @@ public class Usuario {
     public void setPassword(String password) { this.password = password; }
     public void setRol(char rol) { this.rol = rol; }
     
+    public Usuario validarLogin(String email, String password) {
+        Usuario user = null;
+        try {
+            Connection con = Conexion.getConexion();
+            String sql = "SELECT * FROM users WHERE email = ? AND password = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, email);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                setId(rs.getInt("id"));
+                setNombre(rs.getString("nombre"));
+                setApellido(rs.getString("apellido"));
+                setEmail(rs.getString("email"));
+                setPassword(rs.getString("password"));
+                setRol(rs.getString("rol").charAt(0));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al validar usuario: " + e.getMessage());
+        }
+        return user;
+    }
+    
     public String consulAsignaturas() throws ClassNotFoundException {
         String sql="";
         if (rol == 'a') {
