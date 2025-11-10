@@ -4,38 +4,35 @@
  */
 package vista;
 
-/**
- *
- * @author Diurno
- */
 import javax.swing.*;
 
 public class LoginForm extends JFrame {
-    private JTextField txtUsuario;
+
+    private JTextField txtEmail;
     private JPasswordField txtPassword;
     private JButton btnLogin;
 
     public LoginForm() {
         setTitle("Login - Academia");
-        setSize(300, 200);
+        setSize(320, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
 
-        JLabel lblUser = new JLabel("Usuario:");
-        lblUser.setBounds(30, 30, 100, 25);
-        add(lblUser);
+        JLabel lblEmail = new JLabel("Email:");
+        lblEmail.setBounds(30, 30, 100, 25);
+        add(lblEmail);
 
-        txtUsuario = new JTextField();
-        txtUsuario.setBounds(130, 30, 120, 25);
-        add(txtUsuario);
+        txtEmail = new JTextField();
+        txtEmail.setBounds(130, 30, 150, 25);
+        add(txtEmail);
 
         JLabel lblPass = new JLabel("Contraseña:");
         lblPass.setBounds(30, 70, 100, 25);
         add(lblPass);
 
         txtPassword = new JPasswordField();
-        txtPassword.setBounds(130, 70, 120, 25);
+        txtPassword.setBounds(130, 70, 150, 25);
         add(txtPassword);
 
         btnLogin = new JButton("Ingresar");
@@ -43,8 +40,7 @@ public class LoginForm extends JFrame {
         add(btnLogin);
     }
 
-    // Getters
-    public JTextField getTxtUsuario() { return txtUsuario; }
+    public JTextField getTxtEmail() { return txtEmail; }
     public JPasswordField getTxtPassword() { return txtPassword; }
     public JButton getBtnLogin() { return btnLogin; }
 }

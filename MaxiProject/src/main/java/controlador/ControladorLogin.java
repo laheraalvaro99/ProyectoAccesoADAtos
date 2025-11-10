@@ -4,10 +4,6 @@
  */
 package controlador;
 
-/**
- *
- * @author Diurno
- */
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 import vista.LoginForm;
@@ -29,15 +25,16 @@ public class ControladorLogin {
     }
 
     private void login() {
-        String nombre = vista.getTxtUsuario().getText();
+        String email = vista.getTxtEmail().getText();
         String pass = String.valueOf(vista.getTxtPassword().getPassword());
 
-        Usuario user = usuarioDAO.validarLogin(nombre, pass);
+        Usuario user = usuarioDAO.validarLogin(email, pass);
+
         if (user != null) {
-            JOptionPane.showMessageDialog(vista, "Bienvenido " + user.getNombre() + " (" + (user.getRol() == 'p' ? "Profesor" : "Alumno") + ")");
-            // Aquí podrías abrir el panel principal según el rol
+            JOptionPane.showMessageDialog(vista, 
+                    "Bienvenido " + user.getNombre() + " (" + (user.getRol() == 'p' ? "Profesor" : "Alumno") + ")");
         } else {
-            JOptionPane.showMessageDialog(vista, "Usuario o contraseña incorrectos");
+            JOptionPane.showMessageDialog(vista, "Email o contraseña incorrectos.");
         }
     }
 }
