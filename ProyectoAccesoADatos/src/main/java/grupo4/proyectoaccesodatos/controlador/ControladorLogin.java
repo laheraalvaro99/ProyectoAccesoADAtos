@@ -5,6 +5,8 @@
 package grupo4.proyectoaccesodatos.controlador;
 
 import grupo4.proyectoaccesodatos.modelo.Usuario;
+import grupo4.proyectoaccesodatos.vista.InterfazesAlumno.InterfazAlumno;
+import grupo4.proyectoaccesodatos.vista.InterfazesProfesor.InterfazProfesor;
 import grupo4.proyectoaccesodatos.vista.LoginForm;
 
 import javax.swing.*;
@@ -30,11 +32,22 @@ public class ControladorLogin {
 
         user.validarLogin(email, pass);
 
-        if (user != null) {
+        if (user.getId() != 0) {
             JOptionPane.showMessageDialog(vista,
                     "Bienvenido " + user.getNombre() + " (" + (user.getRol() == 'p' ? "Profesor" : "Alumno") + ")");
+            if (user.getRol() == 'p') {
+                // Si el rol es 'p', abrir la interfaz del profesor
+                InterfazProfesor interfazPrincipal = new InterfazProfesor(user.getEmail());
+                interfazPrincipal.setVisible(true);
+            } else if (user.getRol() == 'a') {
+                // Si el rol es 'a', abrir la interfaz del alumno
+                InterfazAlumno interfazAlumno = new InterfazAlumno(user.getEmail());
+                interfazAlumno.setVisible(true);
+            }
+
         } else {
-            JOptionPane.showMessageDialog(vista, "Email o contraseña incorrectos.");
+            // Si la validación falla, mostrar un mensaje de error
+            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
