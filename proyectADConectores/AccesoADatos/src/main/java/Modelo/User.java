@@ -12,14 +12,16 @@ public class User {
 				private int id;
 				private String nombre;
 				private String apellido;
+                private String email;
 				private String contraseña;
 				private boolean profesor;
 
 				public User () {};
 				
-				public User(String nombre, String apellido, String contraseña, boolean profesor) {
+				public User(String nombre, String apellido, String email, String contraseña, boolean profesor) {
 								this.nombre = nombre;
 								this.apellido = apellido;
+                                this.email = email;
 								this.contraseña = contraseña;
 								this.profesor = profesor;
 				}
@@ -39,6 +41,22 @@ public class User {
 				public void setNombre(String nombre) {
 								this.nombre = nombre;
 				}
+                                
+               	public String getEmail() {
+								return email;
+				}
+
+				public void setEmail(String email) {
+								this.email = email;
+				}
+
+				public String getContraseña() {
+								return contraseña;
+				}
+
+				public void setContraseña(String contraseña) {
+								this.contraseña = contraseña;
+				}
 
 				public String getApellido() {
 								return apellido;
@@ -55,7 +73,4 @@ public class User {
 				public void setIsProf(boolean isProf) {
 								this.profesor = isProf;
 				}
-				
-				
-				
 }
