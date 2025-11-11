@@ -35,6 +35,7 @@ public class ControladorLogin {
         if (user.getId() != 0) {
             JOptionPane.showMessageDialog(vista,
                     "Bienvenido " + user.getNombre() + " (" + (user.getRol() == 'p' ? "Profesor" : "Alumno") + ")");
+            vista.setVisible(false);
             if (user.getRol() == 'p') {
                 // Si el rol es 'p', abrir la interfaz del profesor
                 InterfazProfesor interfazPrincipal = new InterfazProfesor(user.getEmail());
