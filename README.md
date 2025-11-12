@@ -83,7 +83,7 @@ A continuación se muestra un esquema simplificado del modelo de base de datos q
 ### 🐾 Pasos para ejecutar el proyecto
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/<TU_USUARIO>/<NOMBRE_DEL_REPOSITORIO>.git
+   git clone https://github.com/laheraalvaro99/ProyectoAccesoADAtos.git
    ```
 2. Abre el archivo SQL principal (`academia.sql`) en **SQL Server Management Studio**.
 3. Ejecuta el script completo (F5) para crear:
