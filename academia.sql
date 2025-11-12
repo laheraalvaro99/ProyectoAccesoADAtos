@@ -8,7 +8,7 @@ USE academia;
 GO
 
 -- ============================================
--- TABLA DE USUARIOS (actualizada con email)
+-- TABLA DE USUARIOS
 -- ============================================
 CREATE TABLE users (
     id INT IDENTITY(1,1) PRIMARY KEY,
@@ -16,7 +16,7 @@ CREATE TABLE users (
     apellido NVARCHAR(100) NOT NULL,
     email NVARCHAR(255) NOT NULL UNIQUE,
     password NVARCHAR(255) NOT NULL,
-    rol CHAR(1) CHECK (rol IN ('a', 'p')) NOT NULL  -- 'a' = alumno, 'p' = profesor
+    rol CHAR(1) CHECK (rol IN ('a', 'p')) NOT NULL
 );
 GO
 
@@ -58,25 +58,22 @@ GO
 -- ============================================
 CREATE TABLE historico_notas (
     id_historico INT IDENTITY(1,1) PRIMARY KEY,
-    id_notas INT NOT NULL,
-    id_asignatura INT NOT NULL,
-    id_user_alumno INT NOT NULL,
-    id_user_profesor INT NOT NULL,
+    id_notas INT NULL,
+    id_asignatura INT NULL,
+    id_user_alumno INT NULL,
+    id_user_profesor INT NULL,
     puntuacion_anterior DECIMAL(4,2) NULL,
     puntuacion_nueva DECIMAL(4,2) NULL,
     fecha_modificacion DATETIME DEFAULT GETDATE(),
     tipo_cambio VARCHAR(20) NOT NULL,
-    motivo NVARCHAR(255) NULL,
-    FOREIGN KEY (id_notas) REFERENCES notas(id),
-    FOREIGN KEY (id_asignatura) REFERENCES asignaturas(id),
-    FOREIGN KEY (id_user_alumno) REFERENCES users(id),
-    FOREIGN KEY (id_user_profesor) REFERENCES users(id)
+    motivo NVARCHAR(255) NULL
 );
 GO
 
 -- ============================================
--- TRIGGERS HISTÓRICOS
+-- TRIGGERS DE CONTROL HISTÓRICO
 -- ============================================
+
 CREATE TRIGGER trg_notas_insert
 ON notas
 AFTER INSERT
@@ -116,6 +113,7 @@ GO
 -- ============================================
 -- DATOS DE EJEMPLO
 -- ============================================
+
 INSERT INTO users (nombre, apellido, email, password, rol) VALUES 
 ('Luis', 'Fernandez', 'luis.fernandez@academia.com', 'pass123', 'p'),
 ('Marta', 'Gómez', 'marta.gomez@academia.com', 'pass123', 'p'),
