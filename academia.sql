@@ -8,12 +8,16 @@ USE academia;
 GO
 
 -- ============================================
--- TABLA DE USUARIOS
+-- TABLA DE USUARIOS (actualizada con email)
 -- ============================================
 CREATE TABLE users (
     id INT IDENTITY(1,1) PRIMARY KEY,
     nombre NVARCHAR(100) NOT NULL,
     apellido NVARCHAR(100) NOT NULL,
+<<<<<<< HEAD
+=======
+    email NVARCHAR(255) NOT NULL UNIQUE,
+>>>>>>> c0e290d97c12550de2f82633d61c9f8e4e8298f8
     password NVARCHAR(255) NOT NULL,
     rol CHAR(1) CHECK (rol IN ('a', 'p')) NOT NULL  -- 'a' = alumno, 'p' = profesor
 );
@@ -37,9 +41,9 @@ GO
 -- ============================================
 CREATE TABLE notas (
     id INT IDENTITY(1,1) PRIMARY KEY,
-    id_user_alumno INT NOT NULL,      -- alumno que recibe la nota
-    id_user_profesor INT NOT NULL,    -- profesor que pone la nota
-    id_asignatura INT NOT NULL,       -- asignatura evaluada
+    id_user_alumno INT NOT NULL,
+    id_user_profesor INT NOT NULL,
+    id_asignatura INT NOT NULL,
     puntuacion DECIMAL(4,2) CHECK (puntuacion BETWEEN 0 AND 10) NOT NULL,
     fecha_registro DATETIME DEFAULT GETDATE(),
     FOREIGN KEY (id_user_alumno) REFERENCES users(id),
@@ -48,7 +52,10 @@ CREATE TABLE notas (
 );
 GO
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c0e290d97c12550de2f82633d61c9f8e4e8298f8
 ALTER TABLE asignaturas
 ADD CONSTRAINT FK_asignaturas_notas FOREIGN KEY (id_nota) REFERENCES notas(id);
 GO
@@ -65,7 +72,7 @@ CREATE TABLE historico_notas (
     puntuacion_anterior DECIMAL(4,2) NULL,
     puntuacion_nueva DECIMAL(4,2) NULL,
     fecha_modificacion DATETIME DEFAULT GETDATE(),
-    tipo_cambio VARCHAR(20) NOT NULL,  -- INSERT, UPDATE, DELETE
+    tipo_cambio VARCHAR(20) NOT NULL,
     motivo NVARCHAR(255) NULL,
     FOREIGN KEY (id_notas) REFERENCES notas(id),
     FOREIGN KEY (id_asignatura) REFERENCES asignaturas(id),
@@ -75,10 +82,8 @@ CREATE TABLE historico_notas (
 GO
 
 -- ============================================
--- TRIGGERS DE CONTROL HISTÓRICO
+-- TRIGGERS HISTÓRICOS
 -- ============================================
-
--- Trigger INSERT
 CREATE TRIGGER trg_notas_insert
 ON notas
 AFTER INSERT
@@ -90,7 +95,6 @@ BEGIN
 END;
 GO
 
--- Trigger UPDATE
 CREATE TRIGGER trg_notas_update
 ON notas
 AFTER UPDATE
@@ -104,7 +108,6 @@ BEGIN
 END;
 GO
 
--- Trigger DELETE
 CREATE TRIGGER trg_notas_delete
 ON notas
 AFTER DELETE
@@ -120,7 +123,15 @@ GO
 -- ============================================
 -- DATOS DE EJEMPLO
 -- ============================================
+INSERT INTO users (nombre, apellido, email, password, rol) VALUES 
+('Luis', 'Fernandez', 'luis.fernandez@academia.com', 'pass123', 'p'),
+('Marta', 'Gómez', 'marta.gomez@academia.com', 'pass123', 'p'),
+('Ana', 'Lopez', 'ana.lopez@academia.com', '1234', 'a'),
+('Carlos', 'Ruiz', 'carlos.ruiz@academia.com', 'abcd', 'a'),
+('Elena', 'Martinez', 'elena.martinez@academia.com', 'xyz', 'a');
+GO
 
+<<<<<<< HEAD
 -- Profesores
 INSERT INTO users (nombre, apellido, password, rol) VALUES 
 ('Luis', 'Fernandez', 'pass123', 'p'),
@@ -133,13 +144,16 @@ INSERT INTO users (nombre, apellido, password, rol) VALUES
 ('Elena', 'Martinez', 'xyz', 'a');
 
 -- Asignaturas (impartidas por los profesores)
+=======
+>>>>>>> c0e290d97c12550de2f82633d61c9f8e4e8298f8
 INSERT INTO asignaturas (nombre, curso, id_user_profesor) VALUES
 ('Matemáticas', '1º', 1),
 ('Lengua', '1º', 2),
 ('Historia', '2º', 1);
+GO
 
--- Notas iniciales (profesores ponen las notas a alumnos)
 INSERT INTO notas (id_user_alumno, id_user_profesor, id_asignatura, puntuacion) VALUES
+<<<<<<< HEAD
 (1, 1, 1, 8.50),
 (2, 1, 1, 6.75),
 (3, 2, 2, 9.20),
@@ -178,4 +192,16 @@ DELETE FROM notas WHERE id = 5;
 
 -- 6️⃣ Consultar histórico
 SELECT * FROM historico_notas;
+=======
+(3, 1, 1, 8.50),
+(4, 1, 1, 6.75),
+(5, 2, 2, 9.20),
+(3, 2, 2, 7.00),
+(4, 1, 3, 5.00);
+GO
+
+UPDATE asignaturas SET id_nota = 1 WHERE id = 1;
+UPDATE asignaturas SET id_nota = 3 WHERE id = 2;
+UPDATE asignaturas SET id_nota = 5 WHERE id = 3;
+>>>>>>> c0e290d97c12550de2f82633d61c9f8e4e8298f8
 GO
