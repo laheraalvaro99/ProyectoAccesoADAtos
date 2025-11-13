@@ -1,9 +1,7 @@
 package grupo4.proyectoaccesodatos.vista.InterfazesProfesor.InterfazesInsertar;
 
 import grupo4.proyectoaccesodatos.modelo.ConsultasProfesor.ConsultasInsertar.ConsultaInsertarNotas;
-import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
