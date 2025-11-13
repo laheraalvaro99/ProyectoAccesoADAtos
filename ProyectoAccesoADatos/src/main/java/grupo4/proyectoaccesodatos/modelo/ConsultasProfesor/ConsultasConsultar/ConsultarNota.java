@@ -4,16 +4,13 @@
  */
 package grupo4.proyectoaccesodatos.modelo.ConsultasProfesor.ConsultasConsultar;
 
-import grupo4.proyectoaccesodatos.modelo.ConsultasProfesor.ConsultasEliminar.ConsultaEliminarNota;
+import grupo4.proyectoaccesodatos.modelo.Conexion;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -22,22 +19,7 @@ import java.util.logging.Logger;
 public class ConsultarNota {
      private Connection conexion;
     public ConsultarNota() {
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String url = "jdbc:sqlserver://localhost:1433;"
-                    + "databaseName=Academia;"
-                    + "integratedSecurity=true;"
-                    + "encrypt=false;"
-                    + "trustServerCertificate=true;";
-
-             conexion = DriverManager.getConnection(url);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException ex) {
-           Logger.getLogger(ConsultaEliminarNota.class.getName()).log(Level.SEVERE, null, ex);
-       }
-        
-        
+        conexion = Conexion.getConexion();
     }
     
      public int obtenerIdUsuarioPorEmail(String email) {

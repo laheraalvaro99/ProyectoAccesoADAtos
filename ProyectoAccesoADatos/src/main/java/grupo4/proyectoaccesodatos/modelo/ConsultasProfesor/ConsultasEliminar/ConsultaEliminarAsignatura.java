@@ -4,8 +4,8 @@
  */
 package grupo4.proyectoaccesodatos.modelo.ConsultasProfesor.ConsultasEliminar;
 
+import grupo4.proyectoaccesodatos.modelo.Conexion;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JFrame;
@@ -16,18 +16,12 @@ import javax.swing.JOptionPane;
  * @author Diurno
  */
 public class ConsultaEliminarAsignatura {
-    public boolean eliminarAsignaturaPorNombre(String nombreAsignatura, JFrame ventana) {
+
+    public boolean eliminarAsignaturaPorNombre(String nombreAsignatura, JFrame ventana) throws SQLException {
         boolean eliminado = false;
 
         try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String url = "jdbc:sqlserver://localhost:1433;"
-                    + "databaseName=Academia;"
-                    + "integratedSecurity=true;"
-                    + "encrypt=false;"
-                    + "trustServerCertificate=true;";
-
-            Connection conexion = DriverManager.getConnection(url);
+            Connection conexion = Conexion.getConexion();
 
             // Usar PreparedStatement para evitar inyecciones SQL
             String sql = "DELETE FROM asignaturas WHERE nombre = ?";
@@ -41,7 +35,7 @@ public class ConsultaEliminarAsignatura {
                 eliminado = true;  // La asignatura fue eliminada
                 // Mostrar mensaje de éxito
                 JOptionPane.showMessageDialog(ventana, "Asignatura eliminada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                
+
                 // Cerrar la ventana
                 ventana.dispose();
             } else {
@@ -51,13 +45,9 @@ public class ConsultaEliminarAsignatura {
 
             stmt.close();
             conexion.close();
-
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
         }
-
         return eliminado;
     }
 }
