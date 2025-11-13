@@ -1,5 +1,8 @@
 package grupo4.proyectoaccesodatos.vista.InterfazesProfesor.InterfazesEliminar;
 
+import grupo4.proyectoaccesodatos.vista.InterfazesProfesor.InterfazesEliminar.InterfazEliminarAsignatura;
+import grupo4.proyectoaccesodatos.vista.InterfazesProfesor.InterfazesEliminar.InterfazEliminarNota;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -10,12 +13,13 @@ package grupo4.proyectoaccesodatos.vista.InterfazesProfesor.InterfazesEliminar;
  * @author Diurno
  */
 public class InterfazEliminar extends javax.swing.JFrame {
-
+String usuario;
     /**
      * Creates new form InterfazEliminar
      */
     public InterfazEliminar(String us) {
         initComponents();
+        this.usuario=us;
     }
 
     /**
@@ -28,6 +32,9 @@ public class InterfazEliminar extends javax.swing.JFrame {
     private void initComponents() {
 
         btnCerrar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btnEliminarAsignatura = new javax.swing.JButton();
+        btnEliminarNota = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,19 +45,51 @@ public class InterfazEliminar extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("QUE DESEAS ELIMINAR");
+
+        btnEliminarAsignatura.setText("ELIMINAR ASIGNATURA");
+        btnEliminarAsignatura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarAsignaturaActionPerformed(evt);
+            }
+        });
+
+        btnEliminarNota.setText("ELIMINAR NOTA");
+        btnEliminarNota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarNotaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(376, Short.MAX_VALUE)
-                .addComponent(btnCerrar)
-                .addGap(334, 334, 334))
+                .addContainerGap(64, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnCerrar)
+                        .addGap(352, 352, 352))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(284, 284, 284))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnEliminarNota, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEliminarAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(53, 53, 53))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(488, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEliminarAsignatura)
+                .addGap(18, 18, 18)
+                .addComponent(btnEliminarNota)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 340, Short.MAX_VALUE)
                 .addComponent(btnCerrar)
                 .addGap(18, 18, 18))
         );
@@ -61,6 +100,16 @@ public class InterfazEliminar extends javax.swing.JFrame {
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void btnEliminarAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAsignaturaActionPerformed
+        InterfazEliminarAsignatura ea = new InterfazEliminarAsignatura();
+        ea.setVisible(true);
+    }//GEN-LAST:event_btnEliminarAsignaturaActionPerformed
+
+    private void btnEliminarNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarNotaActionPerformed
+        InterfazEliminarNota ien = new InterfazEliminarNota(usuario);
+        ien.setVisible(true);
+    }//GEN-LAST:event_btnEliminarNotaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -101,5 +150,8 @@ public class InterfazEliminar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnEliminarAsignatura;
+    private javax.swing.JButton btnEliminarNota;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
