@@ -5,8 +5,10 @@
 package grupo4.proyectoaccesodatos.vista.InterfazesProfesor.InterfazesEliminar;
 
 import grupo4.proyectoaccesodatos.modelo.ConsultasProfesor.ConsultasEliminar.ConsultaEliminarAsignatura;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import grupo4.proyectoaccesodatos.modelo.ConsultasProfesor.ConsultasEliminar.*;
 
 /**
  *
@@ -74,24 +76,30 @@ public class InterfazEliminarAsignatura extends javax.swing.JFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         String nom = txtAsignatura.getText();  // Obtener el nombre de la asignatura desde el campo de texto
-    
-    if (!nom.isEmpty()) {
-        // Crear la instancia de EliminarAsignatura para llamar al método de eliminación
-        ConsultaEliminarAsignatura eliminarAsignatura = new ConsultaEliminarAsignatura();
-        
-        // Llamar al método eliminarAsignaturaPorNombre pasándole el nombre y la ventana actual (this)
-        boolean resultado = eliminarAsignatura.eliminarAsignaturaPorNombre(nom, this);
-        
-        // Mostrar mensaje dependiendo del resultado
-        if (resultado) {
-            JOptionPane.showMessageDialog(this, "Asignatura eliminada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+        if (!nom.isEmpty()) {
+            // Crear la instancia de EliminarAsignatura para llamar al método de eliminación
+            ConsultaEliminarAsignatura eliminarAsignatura = new ConsultaEliminarAsignatura();
+
+            // Llamar al método eliminarAsignaturaPorNombre pasándole el nombre y la ventana actual (this)
+            try {
+                boolean resultado;
+
+                resultado = eliminarAsignatura.eliminarAsignaturaPorNombre(nom, this);
+
+                // Mostrar mensaje dependiendo del resultado
+                if (resultado) {
+                    JOptionPane.showMessageDialog(this, "Asignatura eliminada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se encontró la asignatura para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(InterfazEliminarAsignatura.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "No se encontró la asignatura para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+            // Mostrar advertencia si el campo está vacío
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese el nombre de la asignatura.", "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
-    } else {
-        // Mostrar advertencia si el campo está vacío
-        JOptionPane.showMessageDialog(this, "Por favor, ingrese el nombre de la asignatura.", "Advertencia", JOptionPane.WARNING_MESSAGE);
-    }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
@@ -136,5 +144,4 @@ public class InterfazEliminarAsignatura extends javax.swing.JFrame {
     private javax.swing.JTextField txtAsignatura;
     // End of variables declaration//GEN-END:variables
 
-    
 }

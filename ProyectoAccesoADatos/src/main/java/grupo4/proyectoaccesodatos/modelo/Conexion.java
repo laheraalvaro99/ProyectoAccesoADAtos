@@ -10,12 +10,12 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 /**
  *
  * @author Diurno
  */
 public class Conexion {
+
     private static Connection conexion;
 
     public static Connection getConexion() {

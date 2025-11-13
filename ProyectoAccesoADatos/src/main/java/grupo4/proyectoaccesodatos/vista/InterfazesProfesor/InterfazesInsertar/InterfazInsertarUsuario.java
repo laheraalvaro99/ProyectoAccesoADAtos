@@ -1,15 +1,12 @@
 package grupo4.proyectoaccesodatos.vista.InterfazesProfesor.InterfazesInsertar;
 
 import grupo4.proyectoaccesodatos.modelo.ConsultasProfesor.ConsultasInsertar.ConsultaInsertarUsuario;
-import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Diurno
@@ -21,7 +18,7 @@ public class InterfazInsertarUsuario extends javax.swing.JFrame {
      */
     public InterfazInsertarUsuario() {
         initComponents();
-        
+
     }
 
     /**
@@ -147,20 +144,20 @@ public class InterfazInsertarUsuario extends javax.swing.JFrame {
         String nombreP = txtNombre.getText();
         String apellidoP = txtApellido.getText();
         String rol = jcbRol.getSelectedItem().toString();
-        String email=txtEmail.getText();
-        String contraseña=txtContraseña.getText();
-        
-        try {
-       ConsultaInsertarUsuario ciu = new ConsultaInsertarUsuario();
-       ciu.insertarUsuario(nombreP, apellidoP, rol, email, contraseña);
+        String email = txtEmail.getText();
+        String contraseña = txtContraseña.getText();
 
-    } catch (Exception e) {
-        // Si ocurre una excepción, mostramos el error en un cuadro de mensaje
-        JOptionPane.showMessageDialog(this, 
-            "Se produjo un error al realizar la consulta. " + e.getMessage(), 
-            "Error en la consulta", 
-            JOptionPane.ERROR_MESSAGE);
-    }
+        try {
+            ConsultaInsertarUsuario ciu = new ConsultaInsertarUsuario();
+            ciu.insertarUsuario(nombreP, apellidoP, rol, email, contraseña);
+
+        } catch (Exception e) {
+            // Si ocurre una excepción, mostramos el error en un cuadro de mensaje
+            JOptionPane.showMessageDialog(this,
+                    "Se produjo un error al realizar la consulta. " + e.getMessage(),
+                    "Error en la consulta",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnInsertarActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed

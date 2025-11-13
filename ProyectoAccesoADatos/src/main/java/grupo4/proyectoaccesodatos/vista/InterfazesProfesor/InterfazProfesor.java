@@ -8,19 +8,20 @@ import grupo4.proyectoaccesodatos.vista.InterfazesProfesor.InterfazesUpdate.Inte
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Diurno
  */
 public class InterfazProfesor extends javax.swing.JFrame {
-String us;
+
+    String us;
+
     /**
      * Creates new form InterfazPrincipal
      */
     public InterfazProfesor(String usuario) {
         initComponents();
-       this.us=usuario;
+        this.us = usuario;
     }
 
     /**

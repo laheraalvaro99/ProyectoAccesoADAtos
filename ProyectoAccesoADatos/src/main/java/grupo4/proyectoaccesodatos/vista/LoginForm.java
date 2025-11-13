@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-
 public class LoginForm extends JFrame {
 
     private final JTextField txtEmail;
@@ -45,7 +44,15 @@ public class LoginForm extends JFrame {
         add(btnLogin);
     }
 
-    public JTextField getTxtEmail() { return txtEmail; }
-    public JPasswordField getTxtPassword() { return txtPassword; }
-    public JButton getBtnLogin() { return btnLogin; }
+    public JTextField getTxtEmail() {
+        return txtEmail;
+    }
+
+    public JPasswordField getTxtPassword() {
+        return txtPassword;
+    }
+
+    public JButton getBtnLogin() {
+        return btnLogin;
+    }
 }

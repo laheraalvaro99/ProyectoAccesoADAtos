@@ -1,8 +1,5 @@
 package grupo4.proyectoaccesodatos.vista.InterfazesProfesor.InterfazesEliminar;
 
-import grupo4.proyectoaccesodatos.vista.InterfazesProfesor.InterfazesEliminar.InterfazEliminarAsignatura;
-import grupo4.proyectoaccesodatos.vista.InterfazesProfesor.InterfazesEliminar.InterfazEliminarNota;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template

@@ -7,19 +7,20 @@ import javax.swing.JOptionPane;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Diurno
  */
 public class InterfazInsertarNotas extends javax.swing.JFrame {
-String us ;
+
+    String us;
+
     /**
      * Creates new form InterfazConsulta
      */
     public InterfazInsertarNotas(String usuario) {
         initComponents();
-        this.us=usuario;
+        this.us = usuario;
     }
 
     /**
@@ -131,20 +132,20 @@ String us ;
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
         String nombreA = txtNombre.getText();
         String apellidoA = txtApellido.getText();
-        String asignatura =txtAsignatura.getText();
+        String asignatura = txtAsignatura.getText();
         double nota = Double.parseDouble(txtnota.getText());
-        
-        try {
-        ConsultaInsertarNotas cin = new ConsultaInsertarNotas();
-        cin.insertarNotas(nombreA, apellidoA, asignatura, us, nota);
 
-    } catch (Exception e) {
-        // Si ocurre una excepción, mostramos el error en un cuadro de mensaje
-        JOptionPane.showMessageDialog(this, 
-            "Se produjo un error al realizar la consulta. " + e.getMessage(), 
-            "Error en la consulta", 
-            JOptionPane.ERROR_MESSAGE);
-    }
+        try {
+            ConsultaInsertarNotas cin = new ConsultaInsertarNotas();
+            cin.insertarNotas(nombreA, apellidoA, asignatura, us, nota);
+
+        } catch (Exception e) {
+            // Si ocurre una excepción, mostramos el error en un cuadro de mensaje
+            JOptionPane.showMessageDialog(this,
+                    "Se produjo un error al realizar la consulta. " + e.getMessage(),
+                    "Error en la consulta",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnInsertarActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed

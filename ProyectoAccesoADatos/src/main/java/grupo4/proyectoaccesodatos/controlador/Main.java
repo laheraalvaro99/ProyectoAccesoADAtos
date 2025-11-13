@@ -7,6 +7,7 @@ package grupo4.proyectoaccesodatos.controlador;
 import grupo4.proyectoaccesodatos.vista.LoginForm;
 
 public class Main {
+
     public static void main(String[] args) {
         LoginForm vista = new LoginForm();
         new ControladorLogin(vista);

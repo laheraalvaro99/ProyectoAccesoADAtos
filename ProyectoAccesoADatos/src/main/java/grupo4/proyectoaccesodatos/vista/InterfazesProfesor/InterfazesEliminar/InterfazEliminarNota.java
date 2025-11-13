@@ -13,55 +13,58 @@ import javax.swing.table.DefaultTableModel;
  * @author Diurno
  */
 public class InterfazEliminarNota extends javax.swing.JFrame {
-  private String usuario;
-  private ConsultaEliminarNota consultaNotas;
+
+    private final String usuario;
+    private final ConsultaEliminarNota consultaNotas;
+
     /**
      * Creates new form InterfazEliminarNota
      */
     public InterfazEliminarNota(String usuario) {
         initComponents();
-        this.usuario=usuario;
+        this.usuario = usuario;
         tablaNotas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Nombre", "Apellido", "Asignatura", "Nota"
-            }
+                new Object[][]{
+                    {null, null, null, null},
+                    {null, null, null, null},
+                    {null, null, null, null},
+                    {null, null, null, null}
+                },
+                new String[]{
+                    "Nombre", "Apellido", "Asignatura", "Nota"
+                }
         ));
         consultaNotas = new ConsultaEliminarNota();
 
         // Cargar las notas del usuario (profesor)
         cargarNotas();
     }
-   private void cargarNotas() {
-    int usuarioId = consultaNotas.obtenerIdUsuarioPorEmail(usuario);
 
-    if (usuarioId != -1) {
-        // Obtener las notas para el profesor usando el id del usuario
-        Object[][] notas = consultaNotas.obtenerNotasPorProfesor(usuarioId);
+    private void cargarNotas() {
+        int usuarioId = consultaNotas.obtenerIdUsuarioPorEmail(usuario);
 
-        // Obtener el modelo de la tabla para insertar las filas
-        DefaultTableModel model = (DefaultTableModel) tablaNotas.getModel();
+        if (usuarioId != -1) {
+            // Obtener las notas para el profesor usando el id del usuario
+            Object[][] notas = consultaNotas.obtenerNotasPorProfesor(usuarioId);
 
-        // Limpiar la tabla antes de agregar nuevas filas
-        model.setRowCount(0);
+            // Obtener el modelo de la tabla para insertar las filas
+            DefaultTableModel model = (DefaultTableModel) tablaNotas.getModel();
 
-        // Si encontramos notas, agregarlas a la tabla
-        if (notas != null && notas.length > 0) {
-            for (Object[] fila : notas) {
-                model.addRow(fila);
+            // Limpiar la tabla antes de agregar nuevas filas
+            model.setRowCount(0);
+
+            // Si encontramos notas, agregarlas a la tabla
+            if (notas != null && notas.length > 0) {
+                for (Object[] fila : notas) {
+                    model.addRow(fila);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontraron notas para este profesor.", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "No se encontraron notas para este profesor.", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No se encontró el usuario con ese email.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    } else {
-        JOptionPane.showMessageDialog(this, "No se encontró el usuario con ese email.", "Error", JOptionPane.ERROR_MESSAGE);
     }
-}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -136,32 +139,32 @@ public class InterfazEliminarNota extends javax.swing.JFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         int filaSeleccionada = tablaNotas.getSelectedRow();
 
-    if (filaSeleccionada != -1) { // Verificar que se haya seleccionado una fila
-        // Obtener los valores de la fila seleccionada
-        int notaId = (int) tablaNotas.getValueAt(filaSeleccionada, 0); // Asumiendo que la primera columna es el ID de la nota
-        String alumnoNombre = (String) tablaNotas.getValueAt(filaSeleccionada, 1); // Nombre del alumno
-        String alumnoApellido = (String) tablaNotas.getValueAt(filaSeleccionada, 2); // Apellido del alumno
-        String asignatura = (String) tablaNotas.getValueAt(filaSeleccionada, 3); // Asignatura
+        if (filaSeleccionada != -1) { // Verificar que se haya seleccionado una fila
+            // Obtener los valores de la fila seleccionada
+            int notaId = (int) tablaNotas.getValueAt(filaSeleccionada, 0); // Asumiendo que la primera columna es el ID de la nota
+            String alumnoNombre = (String) tablaNotas.getValueAt(filaSeleccionada, 1); // Nombre del alumno
+            String alumnoApellido = (String) tablaNotas.getValueAt(filaSeleccionada, 2); // Apellido del alumno
+            String asignatura = (String) tablaNotas.getValueAt(filaSeleccionada, 3); // Asignatura
 
-        // Mostrar estos valores por consola (esto es solo para fines de depuración)
-        System.out.println("Nota ID: " + notaId);
-        System.out.println("Alumno: " + alumnoNombre + " " + alumnoApellido);
-        System.out.println("Asignatura: " + asignatura);
+            // Mostrar estos valores por consola (esto es solo para fines de depuración)
+            System.out.println("Nota ID: " + notaId);
+            System.out.println("Alumno: " + alumnoNombre + " " + alumnoApellido);
+            System.out.println("Asignatura: " + asignatura);
 
-        // Eliminar la fila de la base de datos
-        boolean eliminado = consultaNotas.eliminarNota(notaId);
+            // Eliminar la fila de la base de datos
+            boolean eliminado = consultaNotas.eliminarNota(notaId);
 
-        if (eliminado) {
-            // Si la eliminación fue exitosa, eliminar la fila de la tabla también
-            DefaultTableModel model = (DefaultTableModel) tablaNotas.getModel();
-            model.removeRow(filaSeleccionada); // Eliminar la fila de la tabla
-            JOptionPane.showMessageDialog(this, "Nota eliminada con éxito.", "Información", JOptionPane.INFORMATION_MESSAGE);
+            if (eliminado) {
+                // Si la eliminación fue exitosa, eliminar la fila de la tabla también
+                DefaultTableModel model = (DefaultTableModel) tablaNotas.getModel();
+                model.removeRow(filaSeleccionada); // Eliminar la fila de la tabla
+                JOptionPane.showMessageDialog(this, "Nota eliminada con éxito.", "Información", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Hubo un problema al eliminar la nota.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "Hubo un problema al eliminar la nota.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona una fila para eliminar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
-    } else {
-        JOptionPane.showMessageDialog(this, "Por favor, selecciona una fila para eliminar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
-    }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
@@ -194,7 +197,7 @@ public class InterfazEliminarNota extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                String usuario=null;
+                String usuario = null;
                 new InterfazEliminarNota(usuario).setVisible(true);
             }
         });

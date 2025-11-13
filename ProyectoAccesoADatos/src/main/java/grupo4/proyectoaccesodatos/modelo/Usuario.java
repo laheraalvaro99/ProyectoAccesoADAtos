@@ -5,18 +5,16 @@
 package grupo4.proyectoaccesodatos.modelo;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author Diurno
  */
 public class Usuario {
+
     private int id;
     private String nombre;
     private String apellido;
@@ -24,7 +22,8 @@ public class Usuario {
     private String password;
     private char rol; // 'a' = alumno, 'p' = profesor
 
-    public Usuario() {}
+    public Usuario() {
+    }
 
     public Usuario(int id, String nombre, String apellido, String email, String password, char rol) {
         this.id = id;
@@ -36,22 +35,56 @@ public class Usuario {
     }
 
     // Getters y setters
-    public int getId() { return id; }
-    public String getNombre() { return nombre; }
-    public String getApellido() { return apellido; }
-    public String getEmail() { return email; }
-    public String getPassword() { return password; }
-    public char getRol() { return rol; }
+    public int getId() {
+        return id;
+    }
 
-    public void setId(int id) { this.id = id; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
-    public void setApellido(String apellido) { this.apellido = apellido; }
-    public void setEmail(String email) { this.email = email; }
-    public void setPassword(String password) { this.password = password; }
-    public void setRol(char rol) { this.rol = rol; }
-    
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public char getRol() {
+        return rol;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRol(char rol) {
+        this.rol = rol;
+    }
+
     public void validarLogin(String email, String password) {
-        
+
         try {
             Connection con = Conexion.getConexion();
             String sql = "SELECT * FROM users WHERE email = ? AND password = ?";
@@ -75,18 +108,18 @@ public class Usuario {
             System.out.println("Error al validar usuario: " + e.getMessage());
         }
     }
-    
+
     public String consulAsignaturas() throws ClassNotFoundException {
-        String sql="";
+        String sql = "";
         if (rol == 'a') {
             sql = "SELECT DISTINCT a.id, a.nombre\n"
-                + "FROM asignaturas a JOIN notas n\n"
-                + "ON a.id = n.id_asignatura\n"
-                + "WHERE n.id_user_alumno = ?;";
+                    + "FROM asignaturas a JOIN notas n\n"
+                    + "ON a.id = n.id_asignatura\n"
+                    + "WHERE n.id_user_alumno = ?;";
         } else if (rol == 'p') {
             sql = "SELECT a.id, a.nombre\n"
-                + "FROM asignaturas a\n"
-                + "WHERE a.id_user_profesor = ?;";
+                    + "FROM asignaturas a\n"
+                    + "WHERE a.id_user_profesor = ?;";
         }
         try {
             Connection con = Conexion.getConexion();
@@ -95,7 +128,7 @@ public class Usuario {
             ResultSet resul = sentencia.executeQuery();
             String result = "";
             while (resul.next()) {
-                result += resul.getString(1)+ ", " + resul.getString(2) + "\n";
+                result += resul.getString(1) + ", " + resul.getString(2) + "\n";
             }
             resul.close(); // Cerrar ResultSet
             sentencia.close(); // Cerrar Statement

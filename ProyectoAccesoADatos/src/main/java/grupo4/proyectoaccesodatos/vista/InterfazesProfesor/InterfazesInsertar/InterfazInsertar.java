@@ -9,13 +9,15 @@ package grupo4.proyectoaccesodatos.vista.InterfazesProfesor.InterfazesInsertar;
  * @author Diurno
  */
 public class InterfazInsertar extends javax.swing.JFrame {
-String us;
+
+    String us;
+
     /**
      * Creates new form InterfazInsertar
      */
     public InterfazInsertar(String usuario) {
         initComponents();
-        this.us=usuario;
+        this.us = usuario;
     }
 
     /**
@@ -101,18 +103,18 @@ String us;
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnInsertarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarNotasActionPerformed
-       InterfazInsertarNotas iin = new InterfazInsertarNotas(us);
-       iin.setVisible(true);
+        InterfazInsertarNotas iin = new InterfazInsertarNotas(us);
+        iin.setVisible(true);
     }//GEN-LAST:event_btnInsertarNotasActionPerformed
 
     private void btnInsertarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarUsuariosActionPerformed
-         InterfazInsertarUsuario iiu = new InterfazInsertarUsuario();
-       iiu.setVisible(true);
+        InterfazInsertarUsuario iiu = new InterfazInsertarUsuario();
+        iiu.setVisible(true);
     }//GEN-LAST:event_btnInsertarUsuariosActionPerformed
 
     private void btnInsertarAsignaturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarAsignaturasActionPerformed
-         InterfazInsertarAsignatura iia = new InterfazInsertarAsignatura(us);
-       iia.setVisible(true);
+        InterfazInsertarAsignatura iia = new InterfazInsertarAsignatura(us);
+        iia.setVisible(true);
     }//GEN-LAST:event_btnInsertarAsignaturasActionPerformed
 
     /**

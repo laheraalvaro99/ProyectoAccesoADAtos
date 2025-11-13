@@ -9,19 +9,20 @@ import javax.swing.table.DefaultTableModel;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Diurno
  */
 public class InterfazAlumno extends javax.swing.JFrame {
-String us;
+
+    String us;
+
     /**
      * Creates new form InterfazConsulta
      */
     public InterfazAlumno(String usuario) {
         initComponents();
-        this.us=usuario;
+        this.us = usuario;
         cargarNotas();
     }
 
@@ -83,10 +84,10 @@ String us;
 
             // Si no hay resultados, mostramos un mensaje
             if (resultados.isEmpty()) {
-                JOptionPane.showMessageDialog(this, 
-                    "No se encontraron resultados para el alumno.", 
-                    "Consulta sin resultados", 
-                    JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this,
+                        "No se encontraron resultados para el alumno.",
+                        "Consulta sin resultados",
+                        JOptionPane.WARNING_MESSAGE);
             } else {
                 // Si hay resultados, los mostramos en la tabla
                 DefaultTableModel modelo = new DefaultTableModel(
@@ -101,14 +102,12 @@ String us;
 
         } catch (Exception e) {
             // Manejo de excepciones
-            JOptionPane.showMessageDialog(this, 
-                "Se produjo un error al realizar la consulta. " + e.getMessage(), 
-                "Error en la consulta", 
-                JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,
+                    "Se produjo un error al realizar la consulta. " + e.getMessage(),
+                    "Error en la consulta",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
-
-  
 
     /**
      * @param args the command line arguments
