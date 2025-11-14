@@ -131,6 +131,10 @@ Proyecto desarrollado por:
 
 ---
 
+## Gestion del proyecto
+
+https://trello.com/invite/b/69007a6f950cb024b8f287c7/ATTIac0bd088778cb33e9b4734ef6bb43907399E16E2/proyecto-acceso-a-datos
+
 ## 🔑 Licencia
 
 Este proyecto se distribuye bajo la licencia **MIT**, lo que permite su uso y modificación con fines educativos y personales.
