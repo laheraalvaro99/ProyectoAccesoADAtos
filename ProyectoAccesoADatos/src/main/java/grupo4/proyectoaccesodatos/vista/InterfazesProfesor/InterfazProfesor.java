@@ -115,7 +115,7 @@ public class InterfazProfesor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultaActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        InterfazUpdate iu = new InterfazUpdate(us);
+        InterfazUpdate iu = new InterfazUpdate();
         iu.setVisible(true);
     }//GEN-LAST:event_btnModificarActionPerformed
 
