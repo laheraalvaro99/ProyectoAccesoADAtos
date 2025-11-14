@@ -1,5 +1,6 @@
 package grupo4.proyectoaccesodatos.vista.InterfazesProfesor;
 
+import grupo4.proyectoaccesodatos.controlador.ControladorActualizarNotas;
 import grupo4.proyectoaccesodatos.vista.InterfazesProfesor.InterfazesEliminar.InterfazEliminar;
 import grupo4.proyectoaccesodatos.vista.InterfazesProfesor.InterfazesInsertar.InterfazInsertar;
 import grupo4.proyectoaccesodatos.vista.InterfazesProfesor.InterfazesUpdate.InterfazUpdate;
@@ -116,6 +117,7 @@ public class InterfazProfesor extends javax.swing.JFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         InterfazUpdate iu = new InterfazUpdate();
+        new ControladorActualizarNotas(iu,us);
         iu.setVisible(true);
     }//GEN-LAST:event_btnModificarActionPerformed
 
