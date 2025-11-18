@@ -131,9 +131,13 @@ Proyecto desarrollado por:
 
 ---
 
-## Gestion del proyecto
+## 💼 Gestion del proyecto
 
 https://trello.com/invite/b/69007a6f950cb024b8f287c7/ATTIac0bd088778cb33e9b4734ef6bb43907399E16E2/proyecto-acceso-a-datos
+
+## 📖 JavaDoc
+
+El javadoc se encuentra en el zip apidocs. Una vez descomprimido hay que iniciarl el index.html
 
 ## 🔑 Licencia
 
